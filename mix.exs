@@ -17,7 +17,10 @@ defmodule PayPal.Mixfile do
   end
 
   def application do
-    [extra_applications: [:logger, :httpoison]]
+    [
+      extra_applications: [:logger, :httpoison]
+      # mod: {PayPal.Application, []}
+    ]
   end
 
   defp deps do

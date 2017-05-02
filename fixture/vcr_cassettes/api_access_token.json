@@ -1,0 +1,33 @@
+[
+  {
+    "request": {
+      "body": "grant_type=client_credentials",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "method": "post",
+      "options": {
+        "basic_auth": [
+          "***",
+          "***"
+        ]
+      },
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/oauth2/token"
+    },
+    "response": {
+      "body": "{\"scope\":\"https://uri.paypal.com/services/subscriptions https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://uri.paypal.com/services/applications/webhooks openid https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.*\",\"nonce\":\"2017-05-02T01:00:13ZIE5YndiVdx9UE4NdU0DlmFdTICLNxiaCl_eCAagarFE\",\"access_token\":\"<REMOVED>\",\"token_type\":\"Bearer\",\"app_id\":\"<REMOVED>\",\"expires_in\":31398}",
+      "headers": {
+        "Date": "Tue, 02 May 2017 01:16:55 GMT",
+        "Server": "Apache",
+        "X-PAYPAL-TOKEN-SERVICE": "IAAS",
+        "Vary": "Authorization",
+        "Content-Length": "550",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

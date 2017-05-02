@@ -29,6 +29,7 @@ defmodule PayPal.Config do
     iex(1)> PayPal.Config.get
     %{client_id: "CLIENT_ID", client_secret: "CLIENT_SECRET"}
   """
+  @spec get :: %{client_id: String.t, client_secret: String.t}
   def get do
     case !is_nil(System.get_env("PAYPAL_CLIENT_ID")) && !is_nil(System.get_env("PAYPAL_CLIENT_SECRET")) do
       true ->

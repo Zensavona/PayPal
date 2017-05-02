@@ -1,0 +1,64 @@
+[
+  {
+    "request": {
+      "body": "grant_type=client_credentials",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "method": "post",
+      "options": {
+        "basic_auth": [
+          "CLIENT_ID",
+          "CLIENT_SECRET"
+        ]
+      },
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/oauth2/token"
+    },
+    "response": {
+      "body": "{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}",
+      "headers": {
+        "Date": "Tue, 02 May 2017 01:22:12 GMT",
+        "Server": "Apache",
+        "X-PAYPAL-TOKEN-SERVICE": "IAAS",
+        "Vary": "Authorization",
+        "Content-Length": "77",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "grant_type=client_credentials",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "method": "post",
+      "options": {
+        "basic_auth": [
+          "CLIENT_ID",
+          "CLIENT_SECRET"
+        ]
+      },
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/oauth2/token"
+    },
+    "response": {
+      "body": "{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}",
+      "headers": {
+        "Date": "Tue, 02 May 2017 01:22:12 GMT",
+        "Server": "Apache",
+        "X-PAYPAL-TOKEN-SERVICE": "IAAS",
+        "Vary": "Authorization",
+        "Content-Length": "77",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]

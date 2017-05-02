@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "grant_type=client_credentials",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "method": "post",
+      "options": {
+        "basic_auth": [
+          "CLIENT_ID",
+          "CLIENT_SECRET"
+        ]
+      },
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/oauth2/token"
+    },
+    "response": {
+      "body": "timeout",
+      "headers": [],
+      "status_code": null,
+      "type": "error"
+    }
+  }
+]

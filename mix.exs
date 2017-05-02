@@ -12,14 +12,15 @@ defmodule PayPal.Mixfile do
       package: package(),
       test_coverage: [tool: ExCoveralls],
       deps: deps(),
-      docs: [extras: ["README.md"], main: "readme"]
+      docs: [extras: ["README.md"], main: "readme"],
+      dialyzer: [plt_add_deps: :apps_direct]
     ]
   end
 
   def application do
     [
-      extra_applications: [:logger, :httpoison]
-      # mod: {PayPal.Application, []}
+      extra_applications: [:logger, :httpoison],
+      mod: {PayPal.Application, []}
     ]
   end
 
@@ -28,11 +29,12 @@ defmodule PayPal.Mixfile do
       {:httpoison, "~> 0.11.1"},
       {:poison, "~> 3.1.0"},
       {:oauth2, "~> 0.9.1"},
-      {:exvcr, "~> 0.8.2", only: [:dev, :test]},
+      {:exvcr, "~> 0.8.8", only: [:dev, :test]},
       {:ex_doc, "~> 0.15.0", only: [:dev, :docs]},
       {:excoveralls, "~> 0.6.2", only: [:dev, :test]},
       {:inch_ex, "~> 0.5.6", only: [:dev, :docs]},
-      {:credo, "~> 0.7.0", only: :dev}
+      {:credo, "~> 0.7.0", only: :dev},
+      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false}
     ]
   end
 

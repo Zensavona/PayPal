@@ -1,0 +1,21 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-plans"
+    },
+    "response": {
+      "body": "nxdomain",
+      "headers": [],
+      "status_code": null,
+      "type": "error"
+    }
+  }
+]

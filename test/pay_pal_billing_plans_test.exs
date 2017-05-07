@@ -19,7 +19,7 @@ defmodule PayPalBillingPlansTest do
   test "get billing plans" do
     # Application.put_env(:pay_pal, :access_token, "A21AAFs89rwmm06vnCaUq30QCFhPYkzphr3r6H3R2ou9SCK0cX1-DURmUMz_FIqNXfQq-MzjCyOkOk41i1MUcluPntlKTM3GQ")
     use_cassette "billing_plans_get_plans" do
-      resp = PayPal.Billing.Plans.plans()
+      resp = PayPal.Billing.Plans.list()
       assert resp == {:ok,
                        %{links: [%{href: "https://api.sandbox.paypal.com/v1/payments/billing-plans?page_size=10&page=0&start=1&status=CREATED",
                             method: "GET", rel: "start"},
@@ -37,14 +37,14 @@ defmodule PayPalBillingPlansTest do
 
   test "get billing plans, fail with bad credentials" do
     use_cassette "billing_plans_get_plans_unauthorised" do
-      resp = PayPal.Billing.Plans.plans()
+      resp = PayPal.Billing.Plans.list()
       assert resp == {:error, :unauthorised}
     end
   end
 
   test "get billing plans, fail timeout" do
     use_cassette "billing_plans_get_plans_timeout" do
-      resp = PayPal.Billing.Plans.plans()
+      resp = PayPal.Billing.Plans.list()
       assert resp == {:error, :bad_network}
     end
   end

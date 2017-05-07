@@ -13,7 +13,7 @@ defmodule PayPal.Billing.Plans do
 
   ## Examples
 
-      iex> PayPal.Plans.plans
+      iex> PayPal.Plans.list
       {:ok,
        %{links: [%{href: "https://api.sandbox.paypal.com/v1/payments/billing-plans?page_size=10&page=0&start=1&status=CREATED",
             method: "GET", rel: "start"},
@@ -29,8 +29,8 @@ defmodule PayPal.Billing.Plans do
 
 
   """
-  @spec plans :: {atom, any}
-  def plans do
+  @spec list :: {atom, any}
+  def list do
     case PayPal.API.get("payments/billing-plans") do
       {:ok, :no_content} ->
         {:ok, []}

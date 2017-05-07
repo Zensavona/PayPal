@@ -13,7 +13,7 @@ defmodule PayPal.Mixfile do
       test_coverage: [tool: ExCoveralls],
       deps: deps(),
       docs: [extras: ["README.md"], main: "readme"],
-      dialyzer: [plt_add_deps: :apps_direct]
+      dialyzer: [plt_add_deps: :true]
     ]
   end
 

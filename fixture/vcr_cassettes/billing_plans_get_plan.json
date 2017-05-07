@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-plans/P-3C560437P9994340RZAYE2OY"
+    },
+    "response": {
+      "body": "{\"id\":\"P-3C560437P9994340RZAYE2OY\",\"state\":\"CREATED\",\"name\":\"Plan with Regular and Trial Payment Definitions\",\"description\":\"Plan with regular and trial payment definitions.\",\"type\":\"FIXED\",\"payment_definitions\":[{\"id\":\"PD-88G018863E918211XZAYE2OY\",\"name\":\"Regular payment definition\",\"type\":\"REGULAR\",\"frequency\":\"Month\",\"amount\":{\"currency\":\"USD\",\"value\":\"100\"},\"cycles\":\"12\",\"charge_models\":[{\"id\":\"CHM-8K016037XD486311FZAYE2OY\",\"type\":\"TAX\",\"amount\":{\"currency\":\"USD\",\"value\":\"12\"}},{\"id\":\"CHM-0G830639S6488053MZAYE2OY\",\"type\":\"SHIPPING\",\"amount\":{\"currency\":\"USD\",\"value\":\"10\"}}],\"frequency_interval\":\"2\"}],\"merchant_preferences\":{\"setup_fee\":{\"currency\":\"USD\",\"value\":\"1\"},\"max_fail_attempts\":\"0\",\"return_url\":\"http://www.paypal.com\",\"cancel_url\":\"http://www.paypal.com/cancel\",\"auto_bill_amount\":\"YES\",\"initial_fail_amount_action\":\"CONTINUE\"},\"create_time\":\"2017-05-02T08:04:20.411Z\",\"update_time\":\"2017-05-02T08:04:20.411Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/billing-plans/P-3C560437P9994340RZAYE2OY\",\"rel\":\"self\",\"method\":\"GET\"}]}",
+      "headers": {
+        "Date": "Sun, 07 May 2017 04:36:24 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "1065",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

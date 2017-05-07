@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "{\"type\":\"FIXED\",\"payment_definitions\":[{\"type\":\"REGULAR\",\"name\":\"Regular payment definition\",\"frequency_interval\":\"2\",\"frequency\":\"MONTH\",\"cycles\":\"12\",\"charge_models\":[{\"type\":\"SHIPPING\",\"amount\":{\"value\":\"10\",\"currency\":\"USD\"}},{\"type\":\"TAX\",\"amount\":{\"value\":\"12\",\"currency\":\"USD\"}}],\"amount\":{\"value\":\"100\",\"currency\":\"USD\"}}],\"name\":\"Test Plan\",\"merchant_preferences\":{\"setup_fee\":{\"value\":\"1\",\"currency\":\"USD\"},\"return_url\":\"http://www.paypal.com\",\"max_fail_attempts\":\"0\",\"initial_fail_amount_action\":\"CONTINUE\",\"cancel_url\":\"http://www.paypal.com/cancel\",\"auto_bill_amount\":\"YES\"},\"description\":\"Plan with regular and trial payment definitions.\"}",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-plans"
+    },
+    "response": {
+      "body": "{\"id\":\"P-1YH704535C135734P4ET465A\",\"state\":\"CREATED\",\"name\":\"Test Plan\",\"description\":\"Plan with regular and trial payment definitions.\",\"type\":\"FIXED\",\"payment_definitions\":[{\"id\":\"PD-9A748277HB680373H4ET465A\",\"name\":\"Regular payment definition\",\"type\":\"REGULAR\",\"frequency\":\"Month\",\"amount\":{\"currency\":\"USD\",\"value\":\"100\"},\"cycles\":\"12\",\"charge_models\":[{\"id\":\"CHM-67G516347U321241T4ET465A\",\"type\":\"SHIPPING\",\"amount\":{\"currency\":\"USD\",\"value\":\"10\"}},{\"id\":\"CHM-60D809754G70990014ET465A\",\"type\":\"TAX\",\"amount\":{\"currency\":\"USD\",\"value\":\"12\"}}],\"frequency_interval\":\"2\"}],\"merchant_preferences\":{\"setup_fee\":{\"currency\":\"USD\",\"value\":\"1\"},\"max_fail_attempts\":\"0\",\"return_url\":\"http://www.paypal.com\",\"cancel_url\":\"http://www.paypal.com/cancel\",\"auto_bill_amount\":\"YES\",\"initial_fail_amount_action\":\"CONTINUE\"},\"create_time\":\"2017-05-07T04:25:34.324Z\",\"update_time\":\"2017-05-07T04:25:34.324Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/billing-plans/P-1YH704535C135734P4ET465A\",\"rel\":\"self\",\"method\":\"GET\"}]}",
+      "headers": {
+        "Date": "Sun, 07 May 2017 04:25:34 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "1027",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 201,
+      "type": "ok"
+    }
+  }
+]

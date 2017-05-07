@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "{\"value\":{\"cancel_url\":\"http://www.cancel.com\"},\"path\":\"/merchant-preferences\",\"op\":\"replace\"}",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "patch",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-plans/P-3C560437P9994340RZAYE2OY"
+    },
+    "response": {
+      "body": "{\"name\":\"MALFORMED_REQUEST\",\"message\":\"Incoming JSON request does not map to API request\",\"information_link\":\"https://developer.paypal.com/webapps/developer/docs/api/#MALFORMED_REQUEST\",\"debug_id\":\"2418f505ab0db\"}",
+      "headers": {
+        "Date": "Sun, 07 May 2017 05:06:16 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Connection": "close",
+        "Vary": "Authorization",
+        "Content-Length": "213",
+        "Content-Type": "application/json"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]

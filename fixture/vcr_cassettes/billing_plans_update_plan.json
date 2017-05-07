@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "[{\"value\":{\"cancel_url\":\"http://www.cancel.com\"},\"path\":\"/merchant-preferences\",\"op\":\"replace\"}]",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "patch",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-plans/P-3C560437P9994340RZAYE2OY"
+    },
+    "response": {
+      "body": "",
+      "headers": {
+        "Date": "Sun, 07 May 2017 05:06:14 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "0",
+        "Connection": "close",
+        "Content-Type": "text/plain; charset=ISO-8859-1"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -67,6 +67,8 @@ defmodule PayPal.API do
         {:ok, Poison.decode!(body, keys: :atoms)}
       {:ok, %{status_code: 404}} ->
         {:ok, :not_found}
+      {:ok, %{status_code: 400}} ->
+        {:ok, :not_found}
       {:ok, %{status_code: 204}} ->
         {:ok, :no_content}
       {:ok, %{body: body}}->
@@ -101,6 +103,49 @@ defmodule PayPal.API do
     case HTTPoison.post(base_url() <> url, data, headers()) do
       {:ok, %{status_code: 401}} ->
         {:error, :unauthorised}
+      {:ok, %{body: body, status_code: 201}} ->
+        {:ok, Poison.decode!(body, keys: :atoms)}
+      {:ok, %{status_code: 404}} ->
+        {:ok, :not_found}
+      {:ok, %{status_code: 204}} ->
+        {:ok, :no_content}
+      {:ok, %{status_code: 400}} ->
+        {:error, :malformed_request}
+      {:ok, %{body: body}} = resp ->
+        IO.inspect resp
+        {:error, body}
+      _ ->
+        {:error, :bad_network}
+    end
+  end
+
+  @doc """
+  Make a HTTP PATCH request to the correct API depending on environment, adding needed auth header.
+
+  Note: If your name is not Zen and you're reading this, unless you're sending me a PR (thanks!), you probably don't need this.
+
+  Possible returns:
+
+  - {:ok, data}
+  - {:ok, :not_found}
+  - {:ok, :no_content}
+  - {:error, :bad_network}
+  - {:error, reason}
+
+  ## Examples
+
+    iex> PayPal.API.get_oauth_token
+    {:ok, {"XXXXXXXXXXXXXX", 32000}}
+
+  """
+  @spec patch(String.t, map) :: {atom, any}
+  def patch(url, data) do
+    {:ok, data} = Poison.encode(data)
+    case HTTPoison.patch(base_url() <> url, data, headers()) do
+      {:ok, %{status_code: 401}} ->
+        {:error, :unauthorised}
+      {:ok, %{status_code: 200}} ->
+        {:ok, nil}
       {:ok, %{body: body, status_code: 201}} ->
         {:ok, Poison.decode!(body, keys: :atoms)}
       {:ok, %{status_code: 404}} ->

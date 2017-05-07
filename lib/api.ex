@@ -8,6 +8,8 @@ defmodule PayPal.API do
   @doc """
   Requests an OAuth token from PayPal, returns a tuple containing the token and seconds till expiry.
 
+  Note: If your name is not Zen and you're reading this, unless you're sending me a PR (thanks!), you probably don't need this.
+
   Possible returns:
 
   - {:ok, {"XXXXXXXXXXXXXX", 32000}}
@@ -20,7 +22,7 @@ defmodule PayPal.API do
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """
-  @spec get_oauth_token :: {atom, {String.t, integer}}
+  @spec get_oauth_token :: {atom, any}
   def get_oauth_token do
     headers = %{"Content-Type" => "application/x-www-form-urlencoded"}
     options = [hackney: [basic_auth: {PayPal.Config.get.client_id, PayPal.Config.get.client_secret}]]
@@ -35,6 +37,89 @@ defmodule PayPal.API do
       _->
         {:error, :bad_network}
     end
+  end
+
+  @doc """
+  Make a HTTP GET request to the correct API depending on environment, adding needed auth header.
+
+  Note: If your name is not Zen and you're reading this, unless you're sending me a PR (thanks!), you probably don't need this.
+
+  Possible returns:
+
+  - {:ok, data}
+  - {:ok, :not_found}
+  - {:ok, :no_content}
+  - {:error, :bad_network}
+  - {:error, reason}
+
+  ## Examples
+
+    iex> PayPal.API.get_oauth_token
+    {:ok, {"XXXXXXXXXXXXXX", 32000}}
+
+  """
+  @spec get(String.t) :: {atom, any}
+  def get(url) do
+    case HTTPoison.get(base_url() <> url, headers()) do
+      {:ok, %{status_code: 401}} ->
+        {:error, :unauthorised}
+      {:ok, %{body: body, status_code: 200}} ->
+        {:ok, Poison.decode!(body, keys: :atoms)}
+      {:ok, %{status_code: 404}} ->
+        {:ok, :not_found}
+      {:ok, %{status_code: 204}} ->
+        {:ok, :no_content}
+      {:ok, %{body: body}}->
+        {:error, body}
+      _ ->
+        {:error, :bad_network}
+    end
+  end
+
+  @doc """
+  Make a HTTP POST request to the correct API depending on environment, adding needed auth header.
+
+  Note: If your name is not Zen and you're reading this, unless you're sending me a PR (thanks!), you probably don't need this.
+
+  Possible returns:
+
+  - {:ok, data}
+  - {:ok, :not_found}
+  - {:ok, :no_content}
+  - {:error, :bad_network}
+  - {:error, reason}
+
+  ## Examples
+
+    iex> PayPal.API.get_oauth_token
+    {:ok, {"XXXXXXXXXXXXXX", 32000}}
+
+  """
+  @spec post(String.t, map) :: {atom, any}
+  def post(url, data) do
+    {:ok, data} = Poison.encode(data)
+    case HTTPoison.post(base_url() <> url, data, headers()) do
+      {:ok, %{status_code: 401}} ->
+        {:error, :unauthorised}
+      {:ok, %{body: body, status_code: 201}} ->
+        {:ok, Poison.decode!(body, keys: :atoms)}
+      {:ok, %{status_code: 404}} ->
+        {:ok, :not_found}
+      {:ok, %{status_code: 204}} ->
+        {:ok, :no_content}
+      {:ok, %{status_code: 400}} ->
+        {:error, :malformed_request}
+      {:ok, %{body: body}} = resp ->
+        IO.inspect resp
+        {:error, body}
+      _ ->
+        {:error, :bad_network}
+    end
+  end
+
+  @spec headers :: map
+  defp headers do
+    %{"Authorization" => "Bearer #{Application.get_env(:pay_pal, :access_token)}", "Content-Type" => "application/json"}
   end
 
   @spec base_url :: String.t

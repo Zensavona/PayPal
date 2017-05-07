@@ -15,17 +15,13 @@ defmodule PayPal.Billing.Plans do
 
       iex> PayPal.Plans.list
       {:ok,
-       %{links: [%{href: "https://api.sandbox.paypal.com/v1/payments/billing-plans?page_size=10&page=0&start=1&status=CREATED",
-            method: "GET", rel: "start"},
-          %{href: "https://api.sandbox.paypal.com/v1/payments/billing-plans?page_size=10&page=0&status=CREATED",
-            method: "GET", rel: "last"}],
-         plans: [%{create_time: "2017-05-02T08:04:20.411Z",
+          [%{create_time: "2017-05-02T08:04:20.411Z",
             description: "Plan with regular and trial payment definitions.",
             id: "P-3C560437P9994340RZAYE2OY",
             links: [%{href: "https://api.sandbox.paypal.com/v1/payments/billing-plans/P-3C560437P9994340RZAYE2OY",
                method: "GET", rel: "self"}],
             name: "Plan with Regular and Trial Payment Definitions", state: "CREATED",
-            type: "FIXED", update_time: "2017-05-02T08:04:20.411Z"}]}}
+            type: "FIXED", update_time: "2017-05-02T08:04:20.411Z"}]}
 
 
   """
@@ -36,8 +32,42 @@ defmodule PayPal.Billing.Plans do
         {:ok, []}
       {:ok, :not_found} ->
         {:ok, nil}
-      {:ok, data} ->
-        {:ok, data}
+      {:ok, %{plans: plans}} ->
+        {:ok, plans}
+      error ->
+        error
+    end
+  end
+
+  @doc """
+  Get a billing plan by ID.
+
+  Possible returns:
+
+  - {:ok, plan}
+  - {:ok, nil}
+  - {:error, reason}
+
+  ## Examples
+
+      iex> PayPal.Plans.show(id)
+      {:ok,
+          %{create_time: "2017-05-02T08:04:20.411Z",
+            description: "Plan with regular and trial payment definitions.",
+            id: "P-3C560437P9994340RZAYE2OY",
+            links: [%{href: "https://api.sandbox.paypal.com/v1/payments/billing-plans/P-3C560437P9994340RZAYE2OY",
+               method: "GET", rel: "self"}],
+            name: "Plan with Regular and Trial Payment Definitions", state: "CREATED",
+            type: "FIXED", update_time: "2017-05-02T08:04:20.411Z"}}
+
+  """
+  @spec show(String.t) :: {atom, any}
+  def show(id) do
+    case PayPal.API.get("payments/billing-plans/#{id}") do
+      {:ok, :not_found} ->
+        {:ok, nil}
+      {:ok, plan} ->
+        {:ok, plan}
       error ->
         error
     end
@@ -145,10 +175,54 @@ defmodule PayPal.Billing.Plans do
   }) :: {atom, any}
   def create(plan) do
     case PayPal.API.post("payments/billing-plans", plan) do
-      {:ok, :no_content} ->
-        {:ok, []}
-      {:ok, :not_found} ->
-        {:ok, nil}
+      {:ok, data} ->
+        {:ok, data}
+      error ->
+        error
+    end
+  end
+
+  @doc """
+  Update a billing plan
+
+  [docs](https://developer.paypal.com/docs/api/payments.billing-plans#plan_update)
+
+  This can be a bit prickly so I highly suggest you check out the official docs (above), this maps 1:1 to the HTTP API.
+
+  This function takes an ID and a list of change operations (see the PayPal API docs, this is kind of a pain in the ass)
+
+  Possible returns:
+
+  - {:ok, plan}
+  - {:error, reason}
+
+  Example list of operations:
+
+  [
+    %{
+      op: "replace",
+      path: "/merchant-preferences",
+      value: %{
+        cancel_url: "http://www.cancel.com",
+        setup_fee: {
+        value: "5",
+        currency: "USD"
+        }
+      }
+    }
+  ]
+
+
+  ## Examples
+
+      iex> PayPal.Plans.create(id, plan)
+      {:ok, plan}
+
+
+  """
+  @spec update(String.t, map) :: {atom, any}
+  def update(id, plan) do
+    case PayPal.API.patch("payments/billing-plans/#{id}", plan) do
       {:ok, data} ->
         {:ok, data}
       error ->

@@ -9,5 +9,6 @@ This is in development, currently the following parts of the API are working:
 - access token rotation on expiry
 - Billing Plans
 - Billing Agreements
+- Payments
 
 These work fine and I am using them in production, they have test coverage. Check out the docs :)

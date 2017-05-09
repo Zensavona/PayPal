@@ -54,7 +54,7 @@ defmodule PayPal.API do
 
   ## Examples
 
-    iex> PayPal.API.get_oauth_token
+    iex> PayPal.API.get(url)
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """
@@ -93,7 +93,7 @@ defmodule PayPal.API do
 
   ## Examples
 
-    iex> PayPal.API.get_oauth_token
+    iex> PayPal.API.post(url, data)
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """
@@ -136,7 +136,7 @@ defmodule PayPal.API do
 
   ## Examples
 
-    iex> PayPal.API.get_oauth_token
+    iex> PayPal.API.patch(url, data)
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """

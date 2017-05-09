@@ -10,7 +10,6 @@ defmodule PayPalBillingAgreementsTest do
     ExVCR.Config.filter_sensitive_data("basic_auth\":\".+?\"", "basic_auth\":\"<REMOVED>\"")
     ExVCR.Config.filter_sensitive_data("app_id\":\".+?\"", "app_id\":\"<REMOVED>\"")
     ExVCR.Config.filter_sensitive_data("access_token\":\".+?\"", "access_token\":\"<REMOVED>\"")
-    Application.put_env(:pay_pal, :access_token, "A21AAGRHv8XsoIjSpsPVOPxz3bwAEXTUFxtn7K9TDwARZNlifnAlAwkm5xwr0fDQr1JOfx4aBqTT3k-MqPhFMrcThQC_Zz9XQ")
     :ok
   end
 

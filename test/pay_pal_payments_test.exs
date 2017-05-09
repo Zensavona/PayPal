@@ -167,4 +167,42 @@ defmodule PayPalPaymentsTest do
       assert resp == {:ok, [%{cart: "7MA403949P880733G", create_time: "2017-05-09T02:54:14Z", id: "PAY-56X02727YH154025YLEISYVI", intent: "sale", links: [%{href: "https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI", method: "GET", rel: "self"}], payer: %{payer_info: %{country_code: "US", email: "tedelex06@gmail.com", first_name: "Zen", last_name: "Savona", payer_id: "TM63YY9GU9Q8C", phone: "0481854963", shipping_address: %{city: "San Jose", country_code: "US", line1: "4th Floor", line2: "Unit #34", postal_code: "95131", recipient_name: "Brian Robinson", state: "CA"}}, payment_method: "paypal", status: "UNVERIFIED"}, state: "approved", transactions: [%{amount: %{currency: "USD", details: %{handling_fee: "1.00", insurance: "0.01", shipping: "0.03", shipping_discount: "-1.00", subtotal: "30.00", tax: "0.07"}, total: "30.11"}, custom: "EBAY_EMS_90048630024435", description: "The payment transaction description.", invoice_number: "48787589673", item_list: %{items: [%{currency: "USD", description: "Brown hat.", name: "hat", price: "3.00", quantity: 5, sku: "1", tax: "0.01"}, %{currency: "USD", description: "Black handbag.", name: "handbag", price: "15.00", quantity: 1, sku: "product34", tax: "0.02"}], shipping_address: %{city: "San Jose", country_code: "US", line1: "4th Floor", line2: "Unit #34", postal_code: "95131", recipient_name: "Brian Robinson", state: "CA"}}, payee: %{merchant_id: "G8Z6LP4WN9SP4"}, related_resources: [%{sale: %{amount: %{currency: "USD", details: %{handling_fee: "1.00", insurance: "0.01", shipping: "0.03", shipping_discount: "-1.00", subtotal: "30.00", tax: "0.07"}, total: "30.11"}, create_time: "2017-05-09T02:54:14Z", id: "7UB09546JJ671102D", links: [%{href: "https://api.sandbox.paypal.com/v1/payments/sale/7UB09546JJ671102D", method: "GET", rel: "self"}, %{href: "https://api.sandbox.paypal.com/v1/payments/sale/7UB09546JJ671102D/refund", method: "POST", rel: "refund"}, %{href: "https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI", method: "GET", rel: "parent_payment"}], parent_payment: "PAY-56X02727YH154025YLEISYVI", payment_mode: "INSTANT_TRANSFER", protection_eligibility: "ELIGIBLE", protection_eligibility_type: "ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE", soft_descriptor: "PAYPAL *TESTFACILIT ECHI5786786", state: "completed", transaction_fee: %{currency: "USD", value: "1.32"}, update_time: "2017-05-09T02:54:14Z"}}], soft_descriptor: "PAYPAL *TESTFACILIT ECHI5786786"}]}]}
     end
   end
+
+  test "show a sale" do
+    use_cassette "sale_show" do
+      resp = PayPal.Payments.Sales.show("7UB09546JJ671102D")
+      assert resp == {:ok, %{amount: %{currency: "USD", details: %{handling_fee: "1.00", insurance: "0.01", shipping: "0.03", shipping_discount: "-1.00", subtotal: "30.00", tax: "0.07"}, total: "30.11"}, create_time: "2017-05-09T02:54:14Z", custom: "EBAY_EMS_90048630024435", id: "7UB09546JJ671102D", invoice_number: "48787589673", links: [%{href: "https://api.sandbox.paypal.com/v1/payments/sale/7UB09546JJ671102D", method: "GET", rel: "self"}, %{href: "https://api.sandbox.paypal.com/v1/payments/sale/7UB09546JJ671102D/refund", method: "POST", rel: "refund"}, %{href: "https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI", method: "GET", rel: "parent_payment"}], parent_payment: "PAY-56X02727YH154025YLEISYVI", payment_mode: "INSTANT_TRANSFER", protection_eligibility: "ELIGIBLE", protection_eligibility_type: "ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE", soft_descriptor: "PAYPAL *TESTFACILIT ECHI5786786", state: "completed", transaction_fee: %{currency: "USD", value: "1.32"}, update_time: "2017-05-09T02:54:14Z"}}
+    end
+  end
+
+  test "refund a sale" do
+    use_cassette "sale_refund" do
+      resp = PayPal.Payments.Sales.refund("7UB09546JJ671102D", %{
+        amount: %{
+          total: "1.50",
+          currency: "USD"
+        }
+      })
+
+      assert resp == {:ok, %{amount: %{currency: "USD", total: "1.50"}, create_time: "2017-05-09T04:59:50Z", id: "6N458369VN1308144", links: [%{href: "https://api.sandbox.paypal.com/v1/payments/refund/6N458369VN1308144", method: "GET", rel: "self"}, %{href: "https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI", method: "GET", rel: "parent_payment"}, %{href: "https://api.sandbox.paypal.com/v1/payments/sale/7UB09546JJ671102D", method: "GET", rel: "sale"}], parent_payment: "PAY-56X02727YH154025YLEISYVI", sale_id: "7UB09546JJ671102D", state: "completed", update_time: "2017-05-09T04:59:50Z"}}
+    end
+  end
+
+  test "show a refund" do
+    use_cassette "refund_show" do
+      resp = PayPal.Payments.Refunds.show("6N458369VN1308144")
+      assert resp == {:ok,
+                           %{amount: %{currency: "USD", total: "-1.50"},
+                             create_time: "2017-05-09T04:59:50Z", id: "6N458369VN1308144",
+                             invoice_number: "48787589673",
+                             links: [%{href: "https://api.sandbox.paypal.com/v1/payments/refund/6N458369VN1308144",
+                                method: "GET", rel: "self"},
+                              %{href: "https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI",
+                                method: "GET", rel: "parent_payment"},
+                              %{href: "https://api.sandbox.paypal.com/v1/payments/sale/7UB09546JJ671102D",
+                                method: "GET", rel: "sale"}],
+                             parent_payment: "PAY-56X02727YH154025YLEISYVI", sale_id: "7UB09546JJ671102D",
+                             state: "completed", update_time: "2017-05-09T04:59:50Z"}}
+    end
+  end
 end

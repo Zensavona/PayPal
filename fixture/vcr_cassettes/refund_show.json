@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/refund/6N458369VN1308144"
+    },
+    "response": {
+      "body": "{\"id\":\"6N458369VN1308144\",\"create_time\":\"2017-05-09T04:59:50Z\",\"update_time\":\"2017-05-09T04:59:50Z\",\"state\":\"completed\",\"amount\":{\"total\":\"-1.50\",\"currency\":\"USD\"},\"sale_id\":\"7UB09546JJ671102D\",\"parent_payment\":\"PAY-56X02727YH154025YLEISYVI\",\"invoice_number\":\"48787589673\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/refund/6N458369VN1308144\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI\",\"rel\":\"parent_payment\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/7UB09546JJ671102D\",\"rel\":\"sale\",\"method\":\"GET\"}]}",
+      "headers": {
+        "Date": "Tue, 09 May 2017 05:03:56 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "624",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

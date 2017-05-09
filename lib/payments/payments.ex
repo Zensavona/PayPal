@@ -1,6 +1,6 @@
 defmodule PayPal.Payments.Payments do
   @moduledoc """
-  Documentation for PayPal.Payments
+  Documentation for PayPal.Payments.Payments
   """
 
   @doc """
@@ -17,7 +17,7 @@ defmodule PayPal.Payments.Payments do
 
   ## Examples
 
-    iex> PayPal.Payments.create(%{
+    iex> PayPal.Payments.Payments.create(%{
       intent: "sale",
       payer: %{
         payment_method: "paypal"
@@ -177,7 +177,7 @@ defmodule PayPal.Payments.Payments do
 
   ## Examples
 
-    iex> PayPal.Payments.execute(payment_id, payer_id)
+    iex> PayPal.Payments.Payments.execute(payment_id, payer_id)
     {:ok, payment}
   """
   @spec execute(String.t, String.t) :: {atom, any}
@@ -197,7 +197,7 @@ defmodule PayPal.Payments.Payments do
 
   ## Examples
 
-    iex> PayPal.Payments.show(payment_id)
+    iex> PayPal.Payments.Payments.show(payment_id)
     {:ok, payment}
   """
   @spec show(String.t) :: {atom, any}
@@ -221,7 +221,7 @@ defmodule PayPal.Payments.Payments do
 
   ## Examples
 
-    iex> PayPal.Payments.update(payment_id, [%{
+    iex> PayPal.Payments.Payments.update(payment_id, [%{
       op: "replace",
       path: "/transactions/0/amount",
       value: %{
@@ -264,7 +264,7 @@ defmodule PayPal.Payments.Payments do
 
   ## Examples
 
-    iex> PayPal.Payments.show(%{count: 10})
+    iex> PayPal.Payments.Payments.show(%{count: 10})
     {:ok, payment}
   """
   @spec list(map) :: {atom, any}

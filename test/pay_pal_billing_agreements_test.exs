@@ -157,14 +157,14 @@ defmodule PayPalBillingAgreementsTest do
 
   test "suspend an agreement" do
     use_cassette "billing_agreement_suspend" do
-      resp = resp = PayPal.Billing.Agreements.suspend "I-5TCE8UV35GT7", "some reason"
+      resp = PayPal.Billing.Agreements.suspend "I-5TCE8UV35GT7", "some reason"
       assert resp == {:ok, nil}
     end
   end
 
   test "reactivate an agreement" do
     use_cassette "billing_agreement_reactivate" do
-      resp = resp = PayPal.Billing.Agreements.reactivate "I-5TCE8UV35GT7", "some other reason"
+      resp = PayPal.Billing.Agreements.reactivate "I-5TCE8UV35GT7", "some other reason"
       assert resp == {:ok, nil}
     end
   end

@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "{\"transactions\":[{\"soft_descriptor\":\"ECHI5786786\",\"payment_options\":{\"allowed_payment_method\":\"INSTANT_FUNDING_SOURCE\"},\"item_list\":{\"shipping_address\":{\"state\":\"CA\",\"recipient_name\":\"Brian Robinson\",\"postal_code\":\"95131\",\"phone\":\"011862212345678\",\"line2\":\"Unit #34\",\"line1\":\"4th Floor\",\"country_code\":\"US\",\"city\":\"San Jose\"},\"items\":[{\"tax\":\"0.01\",\"sku\":\"1\",\"quantity\":\"5\",\"price\":\"3\",\"name\":\"hat\",\"description\":\"Brown hat.\",\"currency\":\"USD\"},{\"tax\":\"0.02\",\"sku\":\"product34\",\"quantity\":\"1\",\"price\":\"15\",\"name\":\"handbag\",\"description\":\"Black handbag.\",\"currency\":\"USD\"}]},\"invoice_number\":\"48787589673\",\"description\":\"The payment transaction description.\",\"custom\":\"EBAY_EMS_90048630024435\",\"amount\":{\"total\":\"30.11\",\"details\":{\"tax\":\"0.07\",\"subtotal\":\"30.00\",\"shipping_discount\":\"-1.00\",\"shipping\":\"0.03\",\"insurance\":\"0.01\",\"handling_fee\":\"1.00\"},\"currency\":\"USD\"}}],\"redirect_urls\":{\"return_url\":\"http://www.paypal.com/return\",\"cancel_url\":\"http://www.paypal.com/cancel\"},\"payer\":{\"payment_method\":\"paypal\"},\"note_to_payer\":\"Contact us for any questions on your order.\",\"intent\":\"sale\"}",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/payment"
+    },
+    "response": {
+      "body": "{\"id\":\"PAY-56X02727YH154025YLEISYVI\",\"intent\":\"sale\",\"state\":\"created\",\"payer\":{\"payment_method\":\"paypal\"},\"transactions\":[{\"amount\":{\"total\":\"30.11\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"30.00\",\"tax\":\"0.07\",\"shipping\":\"0.03\",\"insurance\":\"0.01\",\"handling_fee\":\"1.00\",\"shipping_discount\":\"-1.00\"}},\"description\":\"The payment transaction description.\",\"custom\":\"EBAY_EMS_90048630024435\",\"invoice_number\":\"48787589673\",\"soft_descriptor\":\"ECHI5786786\",\"payment_options\":{\"allowed_payment_method\":\"INSTANT_FUNDING_SOURCE\",\"recurring_flag\":false,\"skip_fmf\":false},\"item_list\":{\"items\":[{\"name\":\"hat\",\"sku\":\"1\",\"description\":\"Brown hat.\",\"price\":\"3.00\",\"currency\":\"USD\",\"tax\":\"0.01\",\"quantity\":5},{\"name\":\"handbag\",\"sku\":\"product34\",\"description\":\"Black handbag.\",\"price\":\"15.00\",\"currency\":\"USD\",\"tax\":\"0.02\",\"quantity\":1}],\"shipping_address\":{\"recipient_name\":\"Brian Robinson\",\"line1\":\"4th Floor\",\"line2\":\"Unit #34\",\"city\":\"San Jose\",\"state\":\"CA\",\"postal_code\":\"95131\",\"country_code\":\"US\",\"phone\":\"011862212345678\"}},\"related_resources\":[]}],\"note_to_payer\":\"Contact us for any questions on your order.\",\"create_time\":\"2017-05-09T02:41:25Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7MA403949P880733G\",\"rel\":\"approval_url\",\"method\":\"REDIRECT\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI/execute\",\"rel\":\"execute\",\"method\":\"POST\"}]}",
+      "headers": {
+        "Date": "Tue, 09 May 2017 02:41:25 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "1545",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 201,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "[{\"value\":{\"total\":\"18.37\",\"details\":{\"subtotal\":\"13.37\",\"shipping\":\"5.00\"},\"currency\":\"EUR\"},\"path\":\"/transactions/0/amount\",\"op\":\"replace\"},{\"value\":{\"recipient_name\":\"Anna Gruneberg\",\"postal_code\":\"24939\",\"line1\":\"Kathwarinenhof 1\",\"country_code\":\"DE\",\"city\":\"Flensburg\"},\"path\":\"/transactions/0/item_list/shipping_address\",\"op\":\"add\"}]",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "patch",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI"
+    },
+    "response": {
+      "body": "{\"name\":\"VALIDATION_ERROR\",\"details\":[{\"field\":\"purchase_units\",\"issue\":\"Item currency codes should be same as the transaction currency code in all buckets\"},{\"field\":\"purchase_units[0]\",\"issue\":\"Item amount must add up to specified amount subtotal (or total if amount details not specified)\"}],\"message\":\"Invalid request - see details\",\"information_link\":\"https://developer.paypal.com/docs/api/payments/#errors\",\"debug_id\":\"33d7c947acf2f\"}",
+      "headers": {
+        "Date": "Tue, 09 May 2017 03:03:44 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Connection": "close",
+        "Vary": "Authorization",
+        "Content-Length": "440",
+        "Content-Type": "application/json"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]

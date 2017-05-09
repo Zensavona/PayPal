@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "[{\"value\":{\"recipient_name\":\"Anna Gruneberg\",\"postal_code\":\"24939\",\"line1\":\"Kathwarinenhof 1\",\"country_code\":\"DE\",\"city\":\"Flensburg\"},\"path\":\"/transactions/0/item_list/shipping_address\",\"op\":\"add\"}]",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "patch",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/payment/PAY-56X02727YH154025YLEISYVI"
+    },
+    "response": {
+      "body": "{\"name\":\"PAYMENT_ALREADY_DONE\",\"message\":\"Payment has been done already for this cart.\",\"information_link\":\"https://developer.paypal.com/docs/api/payments/#errors\",\"debug_id\":\"5f21028b401de\"}",
+      "headers": {
+        "Date": "Tue, 09 May 2017 03:04:55 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Connection": "close",
+        "Vary": "Authorization",
+        "Content-Length": "191",
+        "Content-Type": "application/json"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]

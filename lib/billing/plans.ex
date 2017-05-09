@@ -13,7 +13,7 @@ defmodule PayPal.Billing.Plans do
 
   ## Examples
 
-      iex> PayPal.Plans.list
+      iex> PayPal.Billing.Plans.list
       {:ok,
           [%{create_time: "2017-05-02T08:04:20.411Z",
             description: "Plan with regular and trial payment definitions.",
@@ -50,7 +50,7 @@ defmodule PayPal.Billing.Plans do
 
   ## Examples
 
-      iex> PayPal.Plans.show(id)
+      iex> PayPal.Billing.Plans.show(id)
       {:ok,
           %{create_time: "2017-05-02T08:04:20.411Z",
             description: "Plan with regular and trial payment definitions.",
@@ -134,7 +134,7 @@ defmodule PayPal.Billing.Plans do
 
   ## Examples
 
-      iex> PayPal.Plans.create(plan)
+      iex> PayPal.Billing.Plans.create(plan)
       {:ok, plan}
 
 
@@ -215,7 +215,7 @@ defmodule PayPal.Billing.Plans do
 
   ## Examples
 
-      iex> PayPal.Plans.create(id, plan)
+      iex> PayPal.Billing.Plans.update(id, plan)
       {:ok, plan}
 
 

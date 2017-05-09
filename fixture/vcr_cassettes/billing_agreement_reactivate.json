@@ -1,0 +1,28 @@
+[
+  {
+    "request": {
+      "body": "{\"note\":\"some other reason\"}",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-agreements/I-5TCE8UV35GT7/re-activate"
+    },
+    "response": {
+      "body": "",
+      "headers": {
+        "Date": "Tue, 09 May 2017 00:31:55 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Connection": "close",
+        "Content-Type": "text/plain; charset=ISO-8859-1"
+      },
+      "status_code": 204,
+      "type": "ok"
+    }
+  }
+]

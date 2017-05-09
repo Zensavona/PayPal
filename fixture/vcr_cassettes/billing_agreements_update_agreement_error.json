@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "{\"value\":{\"start_date\":\"2017-12-22T09:13:49Z\",\"shipping_address\":{\"state\":\"CA\",\"postal_code\":\"95112\",\"line2\":\"Church Street\",\"line1\":\"Hotel Blue Diamond\",\"country_code\":\"US\",\"city\":\"San Jose\"},\"description\":\"Updated description.\"},\"path\":\"/\",\"op\":\"replace\"}",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "patch",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-agreements/I-YLRFBEKMH34T"
+    },
+    "response": {
+      "body": "{\"name\":\"MALFORMED_REQUEST\",\"message\":\"Incoming JSON request does not map to API request\",\"information_link\":\"https://developer.paypal.com/webapps/developer/docs/api/#MALFORMED_REQUEST\",\"debug_id\":\"bf5af82e83308\"}",
+      "headers": {
+        "Date": "Sun, 07 May 2017 07:59:59 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Connection": "close",
+        "Vary": "Authorization",
+        "Content-Length": "213",
+        "Content-Type": "application/json"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]

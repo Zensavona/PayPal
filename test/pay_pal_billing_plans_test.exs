@@ -10,16 +10,10 @@ defmodule PayPalBillingPlansTest do
     ExVCR.Config.filter_sensitive_data("basic_auth\":\".+?\"", "basic_auth\":\"<REMOVED>\"")
     ExVCR.Config.filter_sensitive_data("app_id\":\".+?\"", "app_id\":\"<REMOVED>\"")
     ExVCR.Config.filter_sensitive_data("access_token\":\".+?\"", "access_token\":\"<REMOVED>\"")
-
-    # System.put_env("PAYPAL_CLIENT_ID", "CLIENT_ID")
-    # System.put_env("PAYPAL_CLIENT_SECRET", "CLIENT_SECRET")
-
-    Application.put_env(:pay_pal, :access_token, "A21AAEBoRZwnZ6OG5htl0XzBBLFHThQeKQtW7e7BSvj978VqqPqT_rZNjP8YZ1UXmRbTQxEx5za8jpIexNTVCpaQo9Xh23jbQ")
     :ok
   end
 
   test "get billing plans" do
-    # Application.put_env(:pay_pal, :access_token, "A21AAFs89rwmm06vnCaUq30QCFhPYkzphr3r6H3R2ou9SCK0cX1-DURmUMz_FIqNXfQq-MzjCyOkOk41i1MUcluPntlKTM3GQ")
     use_cassette "billing_plans_get_plans" do
       resp = PayPal.Billing.Plans.list()
       assert resp == {:ok,

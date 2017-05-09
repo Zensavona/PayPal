@@ -1,0 +1,29 @@
+[
+  {
+    "request": {
+      "body": "null",
+      "headers": {
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.sandbox.paypal.com/v1/payments/billing-agreements/EC-6PS7165677242505H/agreement-execute"
+    },
+    "response": {
+      "body": "{\"id\":\"I-YLRFBEKMH34T\",\"state\":\"Active\",\"description\":\"Monthly subscription with a regular monthly payment definition and two-month trial payment definition.\",\"payer\":{\"payment_method\":\"paypal\",\"status\":\"unverified\",\"payer_info\":{\"email\":\"tedelex06@gmail.com\",\"first_name\":\"Zen\",\"last_name\":\"Savona\",\"payer_id\":\"TM63YY9GU9Q8C\",\"shipping_address\":{\"recipient_name\":\"Zen Savona\",\"line1\":\"751235 Stout Drive\",\"line2\":\"0976249 Elizabeth Court\",\"city\":\"Quimby\",\"state\":\"IA\",\"postal_code\":\"51049\",\"country_code\":\"US\"}}},\"plan\":{\"payment_definitions\":[{\"type\":\"REGULAR\",\"frequency\":\"Month\",\"amount\":{\"value\":\"100.00\"},\"cycles\":\"12\",\"charge_models\":[{\"type\":\"TAX\",\"amount\":{\"value\":\"12.00\"}},{\"type\":\"SHIPPING\",\"amount\":{\"value\":\"10.00\"}}],\"frequency_interval\":\"2\"}],\"merchant_preferences\":{\"setup_fee\":{\"value\":\"1.00\"},\"max_fail_attempts\":\"0\",\"auto_bill_amount\":\"YES\"},\"links\":[],\"currency_code\":\"USD\"},\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/billing-agreements/I-YLRFBEKMH34T\",\"rel\":\"self\",\"method\":\"GET\"}],\"start_date\":\"2017-12-22T08:00:00Z\",\"shipping_address\":{\"recipient_name\":\"Zen Savona\",\"line1\":\"751235 Stout Drive\",\"line2\":\"0976249 Elizabeth Court\",\"city\":\"Quimby\",\"state\":\"IA\",\"postal_code\":\"51049\",\"country_code\":\"US\"},\"agreement_details\":{\"outstanding_balance\":{\"value\":\"0.00\"},\"cycles_remaining\":\"12\",\"cycles_completed\":\"0\",\"next_billing_date\":\"2017-12-22T10:00:00Z\",\"last_payment_date\":\"2017-05-07T07:53:31Z\",\"last_payment_amount\":{\"value\":\"1.00\"},\"final_payment_date\":\"2019-10-22T10:00:00Z\",\"failed_payment_count\":\"0\"}}",
+      "headers": {
+        "Date": "Sun, 07 May 2017 07:57:08 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "1547",
+        "Connection": "close",
+        "Content-Type": "application/json"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -8,7 +8,7 @@ defmodule PayPal.Application do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    children = if Mix.env == :test, do: [], else: [worker(Task, [&refresh_token/0], [restart: :permanent])]
+    children = if Application.get_env(:pay_pal, :environment) == :test, do: [], else: [worker(Task, [&refresh_token/0], [restart: :permanent])]
 
     opts = [strategy: :one_for_one, name: PayPal.Supervisor]
     Supervisor.start_link(children, opts)

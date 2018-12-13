@@ -4,7 +4,7 @@ defmodule PayPal.Mixfile do
   def project do
     [
       app: :pay_pal,
-      version: "0.0.3",
+      version: "0.0.5",
       elixir: "~> 1.4",
       build_embedded: Application.get_env(:pay_pal, :environment) == :prod,
       start_permanent: Application.get_env(:pay_pal, :environment) == :prod,

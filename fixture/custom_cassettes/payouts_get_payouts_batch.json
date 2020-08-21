@@ -1,0 +1,32 @@
+[
+	{
+		"request":
+			{
+				"body": "",
+				"headers": {
+					"Content-Type": "application/json",
+					"Authorization": "Bearer Access-Token"
+				},
+				"method": "get",
+	      "options": [],
+	      "request_body": "",
+	      "url": "https://api.sandbox.paypal.com/v1/payments/payouts/FYXMPQTX4JC9N"
+		},
+		"response":
+		{
+			"body": "{\"batch_header\":{\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"batch_status\":\"PROCESSING\",\"time_created\":\"2014-01-27T10:17:00Z\",\"time_completed\":\"2014-01-27T11:17:39.00Z\",\"sender_batch_header\":{\"sender_batch_id\":\"Payouts_2018_100009\",\"email_subject\":\"You have a payout!\"},\"amount\":{\"value\":\"438.35\",\"currency\":\"USD\"},\"fees\":{\"value\":\"5.84\",\"currency\":\"USD\"}},\"items\":[{\"payout_item_id\":\"DUCD8GC3VUKVE\",\"transaction_id\":\"6KA23440H1057442S\",\"transaction_status\":\"SUCCESS\",\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"payout_item_fee\":{\"currency\":\"USD\",\"value\":\"1.00\"},\"payout_item\":{\"recipient_type\":\"EMAIL\",\"amount\":{\"value\":\"65.24\",\"currency\":\"USD\"},\"note\":\"Thanks for your patronage!\",\"receiver\":\"receiver@example.com\",\"sender_item_id\":\"14Feb_978\"},\"time_processed\":\"2014-01-27T10:18:32Z\"},{\"payout_item_id\":\"LGMEPRKTK7FQA\",\"transaction_id\":\"8K128187J1102003K\",\"transaction_status\":\"SUCCESS\",\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"payout_item_fee\":{\"currency\":\"USD\",\"value\":\"1.00\"},\"payout_item\":{\"recipient_type\":\"EMAIL\",\"amount\":{\"value\":\"59.87\",\"currency\":\"USD\"},\"note\":\"Thanks for your patronage!\",\"receiver\":\"receiver2@example.com\",\"sender_item_id\":\"14Feb_321\"},\"time_processed\":\"2014-01-27T10:18:15Z\"},{\"payout_item_id\":\"BQ8GT9VG64EFS\",\"transaction_id\":\"57382391EC1682714\",\"transaction_status\":\"SUCCESS\",\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"payout_item_fee\":{\"currency\":\"USD\",\"value\":\"1.00\"},\"payout_item\":{\"recipient_type\":\"EMAIL\",\"amount\":{\"value\":\"59.87\",\"currency\":\"USD\"},\"note\":\"Thanks for your patronage!\",\"receiver\":\"receiver3@example.com\",\"sender_item_id\":\"14Feb_239\"},\"time_processed\":\"2014-01-27T10:17:15Z\"},{\"payout_item_id\":\"LHKZN4VT93L2Q\",\"transaction_id\":\"1LG71547D1353984N\",\"transaction_status\":\"SUCCESS\",\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"payout_item_fee\":{\"value\":\"USD\",\"currency\":\"0.75\"},\"payout_item\":{\"recipient_type\":\"EMAIL\",\"amount\":{\"value\":\"19.87\",\"currency\":\"USD\"},\"note\":\"Thanks for your patronage!\",\"receiver\":\"receiver4@example.com\",\"sender_item_id\":\"14Feb_235\"},\"time_processed\":\"2014-01-27T10:17:25Z\"},{\"payout_item_id\":\"4ZF3VZHHTQJG6\",\"transaction_id\":\"4BD48613EX3256543\",\"transaction_status\":\"SUCCESS\",\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"payout_item_fee\":{\"currency\":\"USD\",\"value\":\"0.75\"},\"payout_item\":{\"recipient_type\":\"EMAIL\",\"amount\":{\"value\":\"9.87\",\"currency\":\"USD\"},\"note\":\"Thanks for your patronage!\",\"receiver\":\"receiver@example.com\",\"sender_item_id\":\"14Feb_234\"},\"time_processed\":\"2014-01-27T10:17:37Z\"},{\"payout_item_id\":\"DTCJCQ6LMH8JQ\",\"transaction_id\":\"25F63571CL9929422\",\"transaction_status\":\"SUCCESS\",\"payout_item_fee\":{\"currency\":\"USD\",\"value\":\"2.35\"},\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"payout_item\":{\"recipient_type\":\"PHONE\",\"amount\":{\"value\":\"112.34\",\"currency\":\"USD\"},\"note\":\"Thanks for your support!\",\"receiver\":\"91-734-234-1234\",\"sender_item_id\":\"14Feb_235\"},\"time_processed\":\"2014-01-27T10:17:52Z\"},{\"payout_item_id\":\"GSBDQHUAUD44A\",\"transaction_id\":\"53R03517P98080414\",\"transaction_status\":\"SUCCESS\",\"payout_batch_id\":\"FYXMPQTX4JC9N\",\"payout_item_fee\":{\"currency\":\"USD\",\"value\":\"2.5\"},\"payout_item\":{\"recipient_type\":\"PHONE\",\"amount\":{\"value\":\"5.32\",\"currency\":\"USD\"},\"note\":\"Thanks for your patronage!\",\"receiver\":\"408X234-1234\",\"sender_item_id\":\"14Feb_235\"},\"time_processed\":\"2014-01-27T10:17:41Z\"}],\"links\":[{\"rel\":\"self\",\"href\":\"https:\/\/api.sandbox.paypal.com\/v1\/payments\/payouts\/FYXMPQTX4JC9N?page_size=1000&page=1\",\"method\":\"GET\"}]}",
+			"headers": {
+        "Date": "Tue, 09 May 2017 02:41:25 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "3371",
+        "Connection": "close",
+        "Content-Type": "application/json"
+			},
+			"status_code": 200,
+			"type": "ok"
+		}
+
+	}
+]

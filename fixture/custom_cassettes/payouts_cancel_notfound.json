@@ -1,0 +1,32 @@
+[
+	{
+		"request":
+			{
+				"body": "",
+				"headers": {
+					"Content-Type": "application/json",
+					"Authorization": "Bearer ACCESS-TOKEN-HERE"
+				},
+				"method": "post",
+	      "options": [],
+	      "request_body": "",
+	      "url": "https://api.sandbox.paypal.com/v1/payments/payouts-item/DOESNTEXIST/cancel"
+		},
+		"response":
+		{
+			"body": "{\"name\":\"INVALID_RESOURCE_ID\",\"message\":\"The requested resource ID was not found\",\"debug_id\":\"415e0994fb40b\",\"information_link\":\"https:\/\/developer.paypal.com\/docs\/api\/payments.payouts-batch\/#errors\",\"details\":[],\"links\":[]}",
+			"headers": {
+        "Date": "Tue, 09 May 2017 02:41:25 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "669",
+        "Connection": "close",
+        "Content-Type": "application/json"
+			},
+			"status_code": 404,
+			"type": "ok"
+		}
+
+	}
+]

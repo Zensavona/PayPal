@@ -25,7 +25,7 @@ defmodule PayPal.Payments.Payouts do
                             "email_message" => "You have received a payout! Thanks for using our service!"
                           }
     iex> items = [ %{ "recipient_type" => "EMAIL",
-                      "amount" => {
+                      "amount" => %{
                         "value" => "9.87",
                         "currency" => "USD"
                       },
@@ -33,7 +33,7 @@ defmodule PayPal.Payments.Payouts do
                       "sender_item_id" => "201403140001",
                       "receiver" => "receiver@example.com"
               }]
-    iex> PayPal.Payments.Payouts.payouts_post(batch_header, items)
+    iex> PayPal.Payments.Payouts.create_batch(batch_header, items)
     {:ok, batch_response}
   """
   @spec create_batch(map, nonempty_list(map)) :: {atom, any}

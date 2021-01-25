@@ -20,7 +20,7 @@ defmodule PayPal.Payments.Refunds do
     iex> PayPal.Payments.Refunds.show(refund_id)
     {:ok, refund}
   """
-  @spec show(String.t) :: {atom, any}
+  @spec show(String.t) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def show(refund_id) do
     PayPal.API.get("payments/refund/#{refund_id}")
   end

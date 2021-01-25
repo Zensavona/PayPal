@@ -20,7 +20,7 @@ defmodule PayPal.Payments.Orders do
     iex> PayPal.Payments.Orders.show(order_id)
     {:ok, order}
   """
-  @spec show(String.t) :: {atom, any}
+  @spec show(String.t) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def show(order_id) do
     PayPal.API.get("payments/order/#{order_id}")
   end
@@ -45,7 +45,7 @@ defmodule PayPal.Payments.Orders do
     })
     {:ok, refund}
   """
-  @spec authorize(String.t, map) :: {atom, any}
+  @spec authorize(String.t, map) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def authorize(payment_id, params) do
     PayPal.API.post("payments/orders/#{payment_id}/authorize", params)
   end
@@ -71,7 +71,7 @@ defmodule PayPal.Payments.Orders do
     })
     {:ok, capture}
   """
-  @spec capture(String.t, map) :: {atom, any}
+  @spec capture(String.t, map) :: {:ok, map | :not_found | :no_content} | {:error, :unauthorised | :bad_network | any}
   def capture(order_id, params) do
     PayPal.API.post("payments/orders/#{order_id}/capture", params)
   end
@@ -91,7 +91,7 @@ defmodule PayPal.Payments.Orders do
     iex> PayPal.Payments.Orders.void(order_id)
     {:ok, order}
   """
-  @spec void(String.t) :: {atom, any}
+  @spec void(String.t) :: {:ok, map | :not_found | :no_content} | {:error, :unauthorised | :bad_network | any}
   def void(order_id) do
     PayPal.API.post("payments/order/#{order_id}/void", nil)
   end

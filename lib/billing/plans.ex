@@ -25,7 +25,7 @@ defmodule PayPal.Billing.Plans do
 
 
   """
-  @spec list :: {atom, any}
+  @spec list :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def list do
     case PayPal.API.get("payments/billing-plans") do
       {:ok, :no_content} ->
@@ -61,7 +61,7 @@ defmodule PayPal.Billing.Plans do
             type: "FIXED", update_time: "2017-05-02T08:04:20.411Z"}}
 
   """
-  @spec show(String.t) :: {atom, any}
+  @spec show(String.t) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def show(id) do
     case PayPal.API.get("payments/billing-plans/#{id}") do
       {:ok, :not_found} ->
@@ -172,7 +172,7 @@ defmodule PayPal.Billing.Plans do
         max_fail_attempts: String.t
       }
     }],
-  }) :: {atom, any}
+  }) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def create(plan) do
     case PayPal.API.post("payments/billing-plans", plan) do
       {:ok, data} ->
@@ -220,7 +220,7 @@ defmodule PayPal.Billing.Plans do
 
 
   """
-  @spec update(String.t, map) :: {atom, any}
+  @spec update(String.t, map) :: {:ok, map | nil | :not_found | :no_content} | {:error, :unauthorised | :bad_network | any}
   def update(id, plan) do
     case PayPal.API.patch("payments/billing-plans/#{id}", plan) do
       {:ok, data} ->

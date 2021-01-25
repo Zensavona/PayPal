@@ -62,7 +62,7 @@ defmodule PayPal.Billing.Agreements do
       postal_code: String.t,
       country_code: String.t
     }
-  }) :: {atom, any}
+  }) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def create(agreement) do
     case PayPal.API.post("payments/billing-agreements", agreement) do
       {:ok, data} ->
@@ -89,7 +89,7 @@ defmodule PayPal.Billing.Agreements do
       iex> PayPal.Billing.Agreements.execute(agreement_id)
       {:ok, plan}
   """
-  @spec execute(String.t) :: {atom, any}
+  @spec execute(String.t) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def execute(agreement_id) do
     case PayPal.API.post("payments/billing-agreements/#{agreement_id}/agreement-execute", nil) do
       {:ok, data} ->
@@ -133,7 +133,7 @@ defmodule PayPal.Billing.Agreements do
 
 
   """
-  @spec update(String.t, map) :: {atom, any}
+  @spec update(String.t, map) :: {:ok, map | nil | :not_found | :no_content} | {:error, :unauthorised | :bad_network | any}
   def update(id, plan) do
     case PayPal.API.patch("payments/billing-agreements/#{id}", plan) do
       {:ok, data} ->
@@ -165,7 +165,7 @@ defmodule PayPal.Billing.Agreements do
             type: "FIXED", update_time: "2017-05-02T08:04:20.411Z"}}
 
   """
-  @spec show(String.t) :: {atom, any}
+  @spec show(String.t) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def show(id) do
     case PayPal.API.get("payments/billing-agreements/#{id}") do
       {:ok, :not_found} ->
@@ -194,7 +194,7 @@ defmodule PayPal.Billing.Agreements do
 
 
   """
-  @spec cancel(String.t, String.t) :: {atom, any}
+  @spec cancel(String.t, String.t) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def cancel(agreement_id, note) do
     case PayPal.API.post("payments/billing-agreements/#{agreement_id}/cancel", %{note: note}) do
       {:ok, data} ->
@@ -221,7 +221,7 @@ defmodule PayPal.Billing.Agreements do
 
 
   """
-  @spec bill_balance(String.t, map) :: {atom, any}
+  @spec bill_balance(String.t, map) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def bill_balance(agreement_id, params) do
     case PayPal.API.post("payments/billing-agreements/#{agreement_id}/bill-balance", params) do
       {:ok, data} ->
@@ -248,7 +248,7 @@ defmodule PayPal.Billing.Agreements do
 
 
   """
-  @spec set_balance(String.t, map) :: {atom, any}
+  @spec set_balance(String.t, map) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def set_balance(agreement_id, params) do
     case PayPal.API.post("payments/billing-agreements/#{agreement_id}/set-balance", params) do
       {:ok, data} ->
@@ -275,7 +275,7 @@ defmodule PayPal.Billing.Agreements do
 
 
   """
-  @spec reactivate(String.t, String.t) :: {atom, any}
+  @spec reactivate(String.t, String.t) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def reactivate(agreement_id, note) do
     case PayPal.API.post("payments/billing-agreements/#{agreement_id}/re-activate", %{note: note}) do
       {:ok, data} ->
@@ -302,7 +302,7 @@ defmodule PayPal.Billing.Agreements do
 
 
   """
-  @spec suspend(String.t, String.t) :: {atom, any}
+  @spec suspend(String.t, String.t) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def suspend(agreement_id, note) do
     case PayPal.API.post("payments/billing-agreements/#{agreement_id}/suspend", %{note: note}) do
       {:ok, data} ->
@@ -349,7 +349,7 @@ defmodule PayPal.Billing.Agreements do
                 "time_zone": "GMT"
               }]}
   """
-  @spec transactions(String.t, String.t, String.t) :: {atom, any}
+  @spec transactions(String.t, String.t, String.t) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def transactions(agreement_id, start_date, end_date) do
     case PayPal.API.get("payments/billing-agreements/#{agreement_id}/transactions?start_date=#{start_date}&end_date=#{end_date}") do
       {:ok, %{agreement_transaction_list: data}} ->

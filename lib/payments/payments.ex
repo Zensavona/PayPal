@@ -160,7 +160,7 @@ defmodule PayPal.Payments.Payments do
     }}
 
   """
-  @spec create(map) :: {:ok, map} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec create(map) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def create(payment) do
     PayPal.API.post("payments/payment", payment)
   end
@@ -180,7 +180,7 @@ defmodule PayPal.Payments.Payments do
     iex> PayPal.Payments.Payments.execute(payment_id, payer_id)
     {:ok, payment}
   """
-  @spec execute(String.t, String.t) :: {:ok, map} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec execute(String.t, String.t) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def execute(payment_id, payer_id) do
     PayPal.API.post("payments/payment/#{payment_id}/execute", %{payer_id: payer_id})
   end
@@ -200,7 +200,7 @@ defmodule PayPal.Payments.Payments do
     iex> PayPal.Payments.Payments.show(payment_id)
     {:ok, payment}
   """
-  @spec show(String.t) :: {:ok, map} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec show(String.t) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def show(payment_id) do
     PayPal.API.get("payments/payment/#{payment_id}")
   end
@@ -247,7 +247,7 @@ defmodule PayPal.Payments.Payments do
     {:ok, payment}
 
   """
-  @spec update(String.t, list) :: {:ok, map} | {:ok, nil} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec update(String.t, list) :: {:ok, map | nil | :not_found | :no_content} | {:error, :unauthorised | :bad_network | any}
   def update(payment_id, changes) do
     PayPal.API.patch("payments/payment/#{payment_id}", changes)
   end
@@ -267,7 +267,7 @@ defmodule PayPal.Payments.Payments do
     iex> PayPal.Payments.Payments.show(%{count: 10})
     {:ok, payment}
   """
-  @spec list(map) :: {:ok, [map]} | {:ok, map} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec list(map) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def list(query \\ %{}) do
     case PayPal.API.get("payments/payment?#{URI.encode_query(query)}") do
       {:ok, %{payments: payments}} ->

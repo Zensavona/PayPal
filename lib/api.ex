@@ -22,7 +22,7 @@ defmodule PayPal.API do
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """
-  @spec get_oauth_token :: {:error, :unauthorised} | {:ok, {binary, integer}} | {:error, :bad_network}
+  @spec get_oauth_token :: {:error, :unauthorised | :bad_network} | {:ok, {binary, integer}}
   def get_oauth_token do
     headers = %{"Content-Type" => "application/x-www-form-urlencoded"}
     options = [hackney: [basic_auth: {PayPal.Config.get.client_id, PayPal.Config.get.client_secret}]]
@@ -58,7 +58,7 @@ defmodule PayPal.API do
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """
-  @spec get(String.t) :: {:ok, map} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec get(String.t) :: {:ok, map | :not_found | :no_content } | {:error, :unauthorised | :bad_network | any}
   def get(url) do
     case HTTPoison.get(base_url() <> url, headers()) do
       {:ok, %{status_code: 401}} ->
@@ -97,7 +97,7 @@ defmodule PayPal.API do
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """
-  @spec post(String.t, map | list) :: {:ok, map} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec post(String.t, map | list | nil) :: {:ok, map | :not_found | :no_content | nil} | {:error, :unauthorised | :bad_network | any}
   def post(url, data) do
     {:ok, data} = Poison.encode(data)
     case HTTPoison.post(base_url() <> url, data, headers()) do
@@ -140,7 +140,7 @@ defmodule PayPal.API do
     {:ok, {"XXXXXXXXXXXXXX", 32000}}
 
   """
-  @spec patch(String.t, map | list) :: {:ok, map} | {:ok, nil} | {:ok, :not_found} | {:ok, :no_content} | {:error, :unauthorised} | {:error, :bad_network} | {:error, any}
+  @spec patch(String.t, map | list) :: {:ok, map | nil | :not_found | :no_content} | {:error, :unauthorised | :bad_network | any}
   def patch(url, data) do
     {:ok, data} = Poison.encode(data)
     case HTTPoison.patch(base_url() <> url, data, headers()) do

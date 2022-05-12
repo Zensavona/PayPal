@@ -2,8 +2,8 @@ defmodule PayPal.API do
   @moduledoc """
   Documentation for PayPal.API. This module is about the base HTTP functionality
   """
-  @base_url_sandbox "https://api.sandbox.paypal.com/v1/"
-  @base_url_live "https://api.paypal.com/v1/"
+  @base_url_sandbox "https://api.sandbox.paypal.com/"
+  @base_url_live "https://api.paypal.com/"
 
   @doc """
   Requests an OAuth token from PayPal, returns a tuple containing the token and seconds till expiry.
@@ -28,7 +28,7 @@ defmodule PayPal.API do
     options = [hackney: [basic_auth: {PayPal.Config.get.client_id, PayPal.Config.get.client_secret}]]
     form = {:form, [grant_type: "client_credentials"]}
 
-    case HTTPoison.post(base_url() <> "oauth2/token", form, headers, options) do
+    case HTTPoison.post(base_url() <> "v1/oauth2/token", form, headers, options) do
       {:ok, %{status_code: 401}} ->
         {:error, :unauthorised}
       {:ok, %{body: body, status_code: 200}} ->

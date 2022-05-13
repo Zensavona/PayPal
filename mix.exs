@@ -26,13 +26,14 @@ defmodule PayPal.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.13"},
-      {:poison, "~> 3.1"},
-      {:oauth2, "~> 0.9"},
-      {:exvcr, "~> 0.8", only: [:dev, :test]},
+      {:httpoison, "~> 1.8"},
+      {:poison, "~> 5.0"},
+#      {:jason, "~> 1.3"},
+      {:oauth2, "~> 2.0"},
+      {:exvcr, "~> 0.13", only: [:dev, :test]},
       {:ex_doc, "~> 0.15", only: [:dev, :docs]},
       {:excoveralls, "~> 0.6", only: [:dev, :test]},
-      {:inch_ex, "~> 0.5", only: [:dev, :docs]},
+      {:inch_ex, "~> 2.0", only: [:dev, :docs]},
       {:credo, "~> 0.7", only: :dev},
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false}
     ]

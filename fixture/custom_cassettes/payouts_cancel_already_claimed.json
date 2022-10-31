@@ -1,0 +1,32 @@
+[
+	{
+		"request":
+			{
+				"body": "",
+				"headers": {
+					"Content-Type": "application/json",
+					"Authorization": "Bearer ACCESS-TOKEN-HERE"
+				},
+				"method": "post",
+	      "options": [],
+	      "request_body": "{}",
+	      "url": "https://api.sandbox.paypal.com/v1/payments/payouts-item/YYKMVR2AVSVZ4/cancel"
+		},
+		"response":
+		{
+			"body": "{\"name\":\"ITEM_INCORRECT_STATUS\",\"message\":\"Only items in Unclaimed status can be cancelled.\",\"debug_id\":\"49e81dfa52aaf\",\"information_link\":\"https:\/\/developer.paypal.com\/docs\/api\/payments.payouts-batch\/#errors\",\"links\":[]}",
+			"headers": {
+        "Date": "Tue, 09 May 2017 02:41:25 GMT",
+        "Server": "Apache",
+        "Content-Language": "*",
+        "Vary": "Authorization",
+        "Content-Length": "669",
+        "Connection": "close",
+        "Content-Type": "application/json"
+			},
+			"status_code": 400,
+			"type": "ok"
+		}
+
+	}
+]

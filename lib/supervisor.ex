@@ -10,19 +10,29 @@ defmodule PayPal.Application do
 
     # children = if Mix.env == :test, do: [], else: [worker(Task, [&refresh_token/0], [restart: :permanent])]
     # children = [worker(Task, [&refresh_token/0], [restart: :permanent])]
-    children = if Application.get_env(:pay_pal, :environment) == :test, do: [], else: [worker(Task, [&refresh_token/0], [restart: :permanent])]
+    children = if Application.get_env(:pay_pal, :environment) == :test do
+        []
+      else
+        [
+          %{
+            id: PayPal.TokenRefresher,
+            start: {Task, :start_link, [&refresh_token/0]},
+            restart: :permanent
+          }
+        ]
+      end
 
     opts = [strategy: :one_for_one, name: PayPal.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
-  defp refresh_token(seconds \\ 1000) do
+  defp refresh_token() do
     case PayPal.API.get_oauth_token() do
       {:ok, {token, seconds}} ->
         Application.put_env(:pay_pal, :access_token, token)
         Logger.info "[PayPal] Refreshed access token, expires in #{seconds} seconds"
         :timer.sleep(seconds * 1000)
-        refresh_token(seconds)
+        refresh_token()
       {:error, reason} ->
         Logger.error "[PayPal] Refreshing access token failed with reason: #{reason}, retrying in 1 second"
         :timer.sleep(1000)

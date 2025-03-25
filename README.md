@@ -13,3 +13,24 @@ This is in development, currently the following parts of the API are working:
 - Payouts
 
 These work fine and I am using them in production, they have test coverage. Check out the docs :)
+
+# Installation
+
+Add `:pay_pal` as a dependency to your project's `mix.exs`:
+
+```elixir
+defp deps do
+  [
+    {:pay_pal, "~> x.x.x"}
+  ]
+end
+```
+
+Configure your settings in your configuration files:
+
+```elixir
+config :pay_pal,
+  client_id: "your_paypal_client_id",
+  client_secret: "your_paypal_secret",
+  environment: :sandbox
+```

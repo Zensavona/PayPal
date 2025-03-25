@@ -177,7 +177,7 @@ defmodule PayPal.API do
       :prod -> @base_url_live
       _ ->
         require Logger
-        Logger.warn "[PayPal] No `env` found in config, use `sandbox` as default."
+        Logger.warning "[PayPal] No `env` found in config, use `sandbox` as default."
         @base_url_sandbox
     end
   end

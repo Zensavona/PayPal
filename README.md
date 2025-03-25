@@ -21,7 +21,7 @@ Add `:pay_pal` as a dependency to your project's `mix.exs`:
 ```elixir
 defp deps do
   [
-    {:pay_pal, "~> x.x.x"}
+    {:pay_pal, "~> 0.0.7"}
   ]
 end
 ```
